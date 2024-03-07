@@ -8,11 +8,14 @@ namespace StringCalculator.Test
 
             var random = Random.Shared;
 
-            var str = $"{random.Next()},{random.Next()}";
+            var nombreA = random.Next();
+            var nombreB = random.Next();
+
+            var str = $"{nombreA},{nombreB}";
 
             var result = StringCalculator.Parse(str);
 
-            Assert.Equal(3, result);
+            Assert.Equal(nombreA+nombreB, result);
         }
     }
 }
