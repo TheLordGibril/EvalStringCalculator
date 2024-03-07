@@ -10,7 +10,8 @@ namespace StringCalculator
     {
         public static int Parse(string str)
         {
-            throw new NotImplementedException();
+            var parts = str.Split(',');
+            return int.Parse(parts.First()) + int.Parse(parts.Last());
         }
     }
 }
