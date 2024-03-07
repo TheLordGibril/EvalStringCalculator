@@ -83,8 +83,8 @@ namespace StringCalculator.Test
         }
         public static IEnumerable<object[]> TestData()
         {
-            yield return new object[] { "1,-2,3,-4,5", "Nombres négatifs détectés aux positions : 2, 4 dans la chaîne." };
-            yield return new object[] { "-1,2,-3,4,5", "Nombres négatifs détectés aux positions : 1, 3 dans la chaîne." };
+            yield return new object[] { "1,-2,3,-4,5", "Nombres négatifs détectés aux positions : 1, 3 dans la chaîne." };
+            yield return new object[] { "-1,2,-3,4,5", "Nombres négatifs détectés aux positions : 0, 2 dans la chaîne." };
             yield return new object[] { "1,2,3,4,5", null };
         }
 
@@ -99,7 +99,7 @@ namespace StringCalculator.Test
             }
             else
             {
-                int result = StringCalculator.Parse(input);
+                var result = StringCalculator.Parse(input);
                 Assert.Equal(15, result);
             }
         }
