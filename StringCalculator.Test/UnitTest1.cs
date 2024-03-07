@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using System.Text;
 
 namespace StringCalculator.Test
@@ -79,6 +80,28 @@ namespace StringCalculator.Test
             var resultat = StringCalculator.Parse(suiteAvecEspaces.ToString());
 
             Assert.Equal(attendu, resultat);
+        }
+        public static IEnumerable<object[]> TestData()
+        {
+            yield return new object[] { "1,-2,3,-4,5", "Nombres négatifs détectés aux positions : 2, 4 dans la chaîne." };
+            yield return new object[] { "-1,2,-3,4,5", "Nombres négatifs détectés aux positions : 1, 3 dans la chaîne." };
+            yield return new object[] { "1,2,3,4,5", null };
+        }
+
+        [Theory]
+        [MemberData(nameof(TestData))]
+        public void Parse_ShouldHandleVariousCases(string input, string expectedErrorMessage)
+        {
+            if (expectedErrorMessage != null)
+            {
+                var exception = Assert.Throws<ArgumentException>(() => StringCalculator.Parse(input));
+                Assert.Equal(expectedErrorMessage, exception.Message);
+            }
+            else
+            {
+                int result = StringCalculator.Parse(input);
+                Assert.Equal(15, result);
+            }
         }
     }
 }
