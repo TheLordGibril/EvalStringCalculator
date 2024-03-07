@@ -11,7 +11,7 @@ namespace StringCalculator
         public static int Parse(string str)
         {
             var parts = str.Split(',');
-            return int.Parse(parts.First()) + int.Parse(parts.Last());
+            return parts.Select(int.Parse).Sum();
         }
     }
 }

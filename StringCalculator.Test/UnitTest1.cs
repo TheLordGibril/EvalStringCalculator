@@ -8,8 +8,8 @@ namespace StringCalculator.Test
 
             var random = Random.Shared;
 
-            var nombreA = random.Next();
-            var nombreB = random.Next();
+            var nombreA = random.Next()/2;
+            var nombreB = random.Next()/2;
 
             var str = $"{nombreA},{nombreB}";
 
