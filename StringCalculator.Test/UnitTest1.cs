@@ -5,7 +5,10 @@ namespace StringCalculator.Test
         [Fact]
         public void APlusB()
         {
-            var str = "1,2";
+
+            var random = Random.Shared;
+
+            var str = $"{random.Next()},{random.Next()}";
 
             var result = StringCalculator.Parse(str);
 
